@@ -90,6 +90,9 @@ public class MainActivity extends Activity {
         			Log.v("goood","goooood");
         			files = assetManager.list("tessdata");
         			DATA_PATH = files[8];
+        			Log.v(files[0], "files");
+
+        			Log.v(files[8], "files8");
         		} catch (IOException e) {
         			Log.v("bad", "baaaad");
         		}
