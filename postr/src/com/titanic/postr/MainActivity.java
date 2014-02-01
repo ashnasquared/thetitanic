@@ -24,11 +24,10 @@ public class MainActivity extends Activity {
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         
-        File imagesFolder = new File(Environment.getExternalStorageDirectory(), "Posters");
-        imagesFolder.mkdirs(); // <----
-        File image = new File(imagesFolder, "image_001.jpg");
-        Uri uriSavedImage = Uri.fromFile(image);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
+        Context context = this;
+        File file = new File(context.getFilesDir(), "image_001.jpg");
+        
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
         startActivityForResult(intent,CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
     }
 
