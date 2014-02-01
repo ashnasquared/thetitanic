@@ -17,17 +17,11 @@ public class FormActivity extends Activity {
 		String picText = intent.getStringExtra("TEXT"); //gets the text string that was sent to this activity (contents of image)
 	}
 	
-	public String getEndDate(String picText){
-		EditText endDateText = (EditText)findViewById(R.id.ShowEndDate);
-		endDateText.setText("endDate");
-		return "endDate";
-	}
-	
 	public String getDate(String picText){
-		EditText startDateText = (EditText)findViewById(R.id.ShowStartDate);
+		EditText dateText = (EditText)findViewById(R.id.ShowStartDate);
 		//WHAT ABOUT END DATE?????
-		startDateText.setText("startDate");
-		return "startDate";
+		dateText.setText("date");
+		return "date";
 	}
 	
 	public String getWhere(String picText){
@@ -82,29 +76,41 @@ public class FormActivity extends Activity {
 	}
 	
 	public void cancelButton(){
-		final Context context = this;		
+		final Context context = this;
+		
 		cbutton = (Button)findViewById(R.id.Cancel);
+ 
 		cbutton.setOnClickListener(new OnClickListener() {
  
 			@Override
 			public void onClick(View arg0) {
-			    Intent intent = new Intent(context, MainActivity.class);
-                startActivity(intent);   
+ 
+			    Intent intent = new Intent(context, Cancel.class);
+                            startActivity(intent);   
+ 
 			}
+ 
 		});
+		
 	}
 	
 	public void backToPicButton(){
 		final Context context = this;
+		
 		cbutton = (Button)findViewById(R.id.Cancel);
+ 
 		cbutton.setOnClickListener(new OnClickListener() {
  
 			@Override
 			public void onClick(View arg0) {
+ 
 			    Intent intent = new Intent(context, BackPic.class);
-                startActivity(intent);   
+                            startActivity(intent);   
+ 
 			}
+ 
 		});
+		
 	}
 }
 
