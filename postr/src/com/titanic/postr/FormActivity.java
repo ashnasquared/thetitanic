@@ -1,11 +1,14 @@
 package com.titanic.postr;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class FormActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.form_layout);
+		Intent intent = getIntent(); //should get the intent that was used to call this activity
+		String picText = intent.getStringExtra("TEXT"); //gets the text string that was sent to this activity (contents of image)
 	}
 }

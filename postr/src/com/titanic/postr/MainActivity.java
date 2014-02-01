@@ -41,8 +41,9 @@ public class MainActivity extends Activity {
                 Toast.makeText(this, "Image saved to:\n" +
                          data.getData(), Toast.LENGTH_LONG).show();
                 
-                
-                Intent intent = new Intent(context, FormActivity.class);
+                String pictureText = ""; //update this to be the result of the tesseract stuff
+                Intent intent = new Intent(context, FormActivity.class); //create the new form activity
+                intent.putExtra("TEXT", pictureText); //store the results of the ocr to send to the form
                 startActivity(intent); 
             } else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the image capture
