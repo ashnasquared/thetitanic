@@ -34,6 +34,7 @@
         </activity>
         
         <activity
+<<<<<<< HEAD
 		  android:name="com.dropbox.client2.android.AuthActivity"
 		  android:launchMode="singleTask"
 		  android:configChanges="orientation|keyboard">
@@ -45,6 +46,15 @@
 		  </intent-filter>
 		</activity>       
         
+=======
+            android:name="com.titanic.postr.FormActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.titanic.postr.CalActivity"
+            android:label="@string/app_name" >
+        </activity>
+>>>>>>> 37a7e9ced208d2e24f7be99194acb4b1fd589373
     </application>
 
 

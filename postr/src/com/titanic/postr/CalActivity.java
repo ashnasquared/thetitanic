@@ -21,18 +21,18 @@ public class CalActivity extends Activity{
 		Intent calIntent = new Intent(Intent.ACTION_INSERT); //create an intent to store the event in the calendar
 
 		//I don't think we need this line, but if this isn't working it's a possible cause
-		//intent.setData(CalendarContract.Events.CONTENT_URI);
+		//calIntent.setData(CalendarContract.Events.CONTENT_URI);
 		calIntent.setType("vnd.android.cursor.item/event");
 		calIntent.putExtra(Events.TITLE, eventTitle);
 		calIntent.putExtra(Events.EVENT_LOCATION, eventLocation);
 
 		//need to decide what format the date will be sent in, and how to parse it
 		GregorianCalendar calDate = new GregorianCalendar(2012, 10, 02);
-		intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+		calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
 		  calDate.getTimeInMillis());
-		intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+		calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
 		  calDate.getTimeInMillis());
-		startActivity(intent);
+		startActivity(calIntent);
 		
 		//I'm not sure if this will open the calendar or just add the event.
 	}
