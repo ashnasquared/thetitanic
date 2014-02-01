@@ -43,7 +43,7 @@ public class FormActivity extends Activity {
 	public void submitButton(){
 		final Context context = this;
 		
-		cbutton = (Button)findViewById(R.id.Submit);
+		cbutton = (Button)findViewById(R.id.Cancel);
  
 		cbutton.setOnClickListener(new OnClickListener() {
  
@@ -75,17 +75,17 @@ public class FormActivity extends Activity {
 		});
 	}
 	
-	public void cancelButton(){
+	public void submitButton(){
 		final Context context = this;
 		
-		cbutton = (Button)findViewById(R.id.Cancel);
+		cbutton = (Button)findViewById(R.id.Submit);
  
 		cbutton.setOnClickListener(new OnClickListener() {
  
 			@Override
 			public void onClick(View arg0) {
  
-			    Intent intent = new Intent(context, Cancel.class);
+			    Intent intent = new Intent(context, Submit.class);
                             startActivity(intent);   
  
 			}

@@ -85,7 +85,7 @@ public class FormActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
  
-			    Intent intent = new Intent(context, Cancel.class);
+			    Intent intent = new Intent(context, Submit.class);
                             startActivity(intent);   
  
 			}
