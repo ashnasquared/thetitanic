@@ -5,9 +5,7 @@
   android:layout_height="fill_parent">
    
   <ImageView
-       android:id="@+id/logo"
-       android:contentDescription="@string/desc"
        android:src="@drawable/logo"
        android:layout_width="fill_parent"
-       android:layout_height="fill_parent" />
+       android:layout_height="fill_parent"/>
 </LinearLayout>
