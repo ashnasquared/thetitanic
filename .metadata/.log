@@ -9332,3 +9332,8 @@ Caused by: org.eclipse.core.internal.resources.ResourceException: Resource is ou
 	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
 	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:49)
 	... 15 more
+
+!ENTRY org.eclipse.core.resources 2 2 2014-02-01 00:04:07.360
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2014-02-01 00:04:07.360
+!MESSAGE The project description file (.project) for 'MyFirstApp' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
