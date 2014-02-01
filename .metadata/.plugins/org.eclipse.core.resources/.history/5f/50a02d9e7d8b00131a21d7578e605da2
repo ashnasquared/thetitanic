@@ -1,0 +1,10 @@
+package com.titanic.postr;
+
+
+public class DbSave extends android.app.Activity {
+	
+	final static private String APP_KEY = "vhtv1td6jne8eqj";
+	final static private String APP_SECRET = "INSERT_APP_SECRET";
+	final static private AccessType ACCESS_TYPE = AccessType.INSERT_APP_ACCESS_TYPE;
+
+}

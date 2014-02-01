@@ -1,0 +1,13 @@
+package com.titanic.postr;
+
+public class DbSave {
+	
+	private DropboxAPI<AndroidAuthSession> mDBApi;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    mDbxAcctMgr = DbxAccountManager.getInstance(getApplicationContext(), "vhtv1td6jne8eqj", "7dvjrjyp0f3d77e");
+	}
+
+}

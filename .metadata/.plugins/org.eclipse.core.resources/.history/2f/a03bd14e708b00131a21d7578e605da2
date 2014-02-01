@@ -1,0 +1,17 @@
+package com.titanic.postr;
+
+import com.dropbox.client2.session.Session.AccessType;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+public class DbSave extends android.app.Activity {
+	
+	final static private String APP_KEY = "vhtv1td6jne8eqj";
+	final static private String APP_SECRET = "7dvjrjyp0f3d77e";
+	final static private AccessType ACCESS_TYPE = AccessType.APP_FOLDER;
+	
+
+}

@@ -103,6 +103,16 @@
 	    android:textColor="@color/custom_text"
 	    android:background="@color/custom_button">  
 	</Button>
+	
+    <Button  
+	    android:id="@+id/DBSave"  
+	    android:layout_height="wrap_content"  
+	    android:text="@string/dbsave"  
+	    android:layout_width="fill_parent"
+	    android:layout_marginTop="10.0dip"
+	    android:textColor="@color/custom_text"
+	    android:background="@color/custom_button">  
+	</Button>
         
     </LinearLayout>  
     

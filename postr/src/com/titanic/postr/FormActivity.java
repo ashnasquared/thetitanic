@@ -112,6 +112,25 @@ public class FormActivity extends Activity {
 		});
 		
 	}
+	
+	public void dBSave(){
+		final Context context = this;
+		
+		cbutton = (Button)findViewById(R.id.DBSave);
+ 
+		cbutton.setOnClickListener(new OnClickListener() {
+ 
+			@Override
+			public void onClick(View arg0) {
+ 
+			    Intent intent = new Intent(context, DbSave.class);
+                            startActivity(intent);   
+ 
+			}
+ 
+		});
+		
+	}
 }
 
 

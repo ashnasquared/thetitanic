@@ -1,0 +1,19 @@
+package com.titanic.postr;
+
+import com.dropbox.sync.android.DbxAccountManager;
+
+import android.os.Bundle;
+
+public class DbSave extends android.app.Activity {
+	
+	private DbxAccountManager mDbxAcctMgr;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    mDbxAcctMgr = DbxAccountManager.getInstance(getApplicationContext(), "vhtv1td6jne8eqj", "7dvjrjyp0f3d77e");
+	}
+	
+	DbxFileSystem dbxFs = DbxFileSystem.forAccount(mDbxAcctMgr.getLinkedAccount());
+
+}

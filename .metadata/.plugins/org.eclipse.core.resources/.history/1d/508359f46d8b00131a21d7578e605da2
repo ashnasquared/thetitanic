@@ -1,0 +1,42 @@
+package com.titanic.postr;
+
+import com.dropbox.sync.android.DbxAccountManager;
+import com.dropbox.sync.android.DbxFileSystem;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+public class DbSave extends android.app.Activity {
+	
+	private DbxAccountManager mDbxAcctMgr;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    mDbxAcctMgr = DbxAccountManager.getInstance(getApplicationContext(), "vhtv1td6jne8eqj", "7dvjrjyp0f3d77e");
+	}
+	
+	static final int REQUEST_LINK_TO_DBX = 1;  // This value is up to you
+
+	public void onClickLinkToDropbox(View view) {
+	    mDbxAcctMgr.startLink((Activity)this, REQUEST_LINK_TO_DBX);
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if (requestCode == REQUEST_LINK_TO_DBX) {
+	        if (resultCode == Activity.RESULT_OK) {
+	            // ... Start using Dropbox files.
+	        } else {
+	            // ... Link failed or was cancelled by the user.
+	        }
+	    } else {
+	        super.onActivityResult(requestCode, resultCode, data);
+	    }
+	}
+	
+	DbxFileSystem dbxFs = DbxFileSystem.forAccount(mDbxAcctMgr.getLinkedAccount());
+
+}

@@ -1,0 +1,13 @@
+package com.titanic.postr;
+
+public class DbSave {
+	
+	private DbxAccountManager mDbxAcctMgr;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    mDbxAcctMgr = DbxAccountManager.getInstance(getApplicationContext(), "vhtv1td6jne8eqj", APP_SECRET);
+	}
+
+}
