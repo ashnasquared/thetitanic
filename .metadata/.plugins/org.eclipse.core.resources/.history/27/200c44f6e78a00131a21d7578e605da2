@@ -3,7 +3,6 @@ package com.titanic.postr;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
 
 public class FormActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
@@ -14,20 +13,14 @@ public class FormActivity extends Activity {
 	}
 	
 	public String getDate(String picText){
-		EditText dateText = (EditText)findViewById(R.id.ShowDate);
-		dateText.setText("date");
 		return "date";
 	}
 	
 	public String getWhere(String picText){
-		EditText locationText = (EditText)findViewById(R.id.ShowLocation);
-		locationText.setText("location");
 		return "location";
 	}
 	
 	public String getTitle(String picText){
-		EditText titleText = (EditText)findViewById(R.id.EditTextName);
-		titleText.setText("title");
 		return "title";
 	}
 }
