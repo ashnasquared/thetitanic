@@ -141,7 +141,7 @@ public class MainActivity extends Activity {
 				     int green = (color >> 8)&0xff;
 				     int blue = (color >> 16)&0xff;
 				     int avg = (red+green+blue)/3;
-				     int threshold = 75;
+				     int threshold = 90;
 				     if (avg > threshold){
 				    	 colors[y*width+x] = 0xffffffff;
 				     } else {
@@ -201,23 +201,23 @@ public class MainActivity extends Activity {
 				// We will display a stripped out trimmed alpha-numeric version of it (if lang is eng)
 				// so that garbage doesn't make it to the display.
 
-				Log.v(TAG, "OCRED TEXT: " + recognizedText);
 
-
-				recognizedText = recognizedText.replaceAll("[^a-zA-Z0-9:/]+", " ");
+				recognizedText = recognizedText.replaceAll("[^a-zA-Z0-9:/\n]+", " ");
 				
 
 				recognizedText = recognizedText.trim();
 
-				if ( recognizedText.length() != 0 ) {
-					Log.v(TAG, recognizedText);
+				/*if ( recognizedText.length() != 0 ) {
+					Log.v(TAG, "OCRED TEXT: " + recognizedText);
 					Toast.makeText(this, recognizedText, Toast.LENGTH_LONG).show();
-				}
+				}*/
 
 				
-				Intent intent = new Intent(context, FormActivity.class); //create the new form activity
+				Intent intent = new Intent(this, FormActivity.class); //create the new form activity
+				Log.v("jhj", "khkjh");
 				intent.putExtra("TEXT", recognizedText); //store the results of the ocr to send to the form
-				//startActivity(intent); 
+				Log.v("hh", "hh");
+				startActivity(intent); 
 			} else if (resultCode == RESULT_CANCELED) {
 				// User cancelled the image capture
 			} else {

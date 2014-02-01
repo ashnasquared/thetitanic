@@ -32,6 +32,14 @@
             android:label="@string/app_name" >
         </activity>
         
+        <activity
+            android:name="com.titanic.postr.FormActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.titanic.postr.CalActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>
