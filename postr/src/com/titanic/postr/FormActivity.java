@@ -82,41 +82,29 @@ public class FormActivity extends Activity {
 	}
 	
 	public void cancelButton(){
-		final Context context = this;
-		
+		final Context context = this;		
 		cbutton = (Button)findViewById(R.id.Cancel);
- 
 		cbutton.setOnClickListener(new OnClickListener() {
  
 			@Override
 			public void onClick(View arg0) {
- 
 			    Intent intent = new Intent(context, MainActivity.class);
-                            startActivity(intent);   
- 
+                startActivity(intent);   
 			}
- 
 		});
-		
 	}
 	
 	public void backToPicButton(){
 		final Context context = this;
-		
 		cbutton = (Button)findViewById(R.id.Cancel);
- 
 		cbutton.setOnClickListener(new OnClickListener() {
  
 			@Override
 			public void onClick(View arg0) {
- 
 			    Intent intent = new Intent(context, BackPic.class);
-                            startActivity(intent);   
- 
+                startActivity(intent);   
 			}
- 
 		});
-		
 	}
 }
 
