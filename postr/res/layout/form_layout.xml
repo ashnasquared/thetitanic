@@ -79,21 +79,29 @@
 	    android:id="@+id/Cancel"  
 	    android:layout_height="wrap_content"  
 	    android:text="@string/cancel"   
-	    android:layout_width="fill_parent">  
+	    android:layout_width="fill_parent"
+	    android:textColor="@color/custom_text"
+	    android:background="@color/custom_button">  
 	</Button> 
 	
     <Button  
 	    android:id="@+id/BackPic"  
 	    android:layout_height="wrap_content"  
 	    android:text="@string/backpic"  
-	    android:layout_width="fill_parent">  
+	    android:layout_width="fill_parent"
+	    android:layout_marginTop="10.0dip"
+	    android:textColor="@color/custom_text"
+	    android:background="@color/custom_button">  
 	</Button> 
 	
     <Button  
 	    android:id="@+id/Submit"  
 	    android:layout_height="wrap_content"  
 	    android:text="@string/submit"  
-	    android:layout_width="fill_parent">  
+	    android:layout_width="fill_parent"
+	    android:layout_marginTop="10.0dip"
+	    android:textColor="@color/custom_text"
+	    android:background="@color/custom_button">  
 	</Button>
         
     </LinearLayout>  
