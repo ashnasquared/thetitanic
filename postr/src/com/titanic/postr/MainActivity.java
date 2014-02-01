@@ -1,17 +1,14 @@
 package com.titanic.postr;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 
 
 import com.googlecode.leptonica.android.Pix;
-import com.googlecode.leptonica.android.Pixa;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import android.app.Activity;
@@ -26,7 +23,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.MediaStore.Files.FileColumns;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
@@ -50,12 +46,14 @@ public class MainActivity extends Activity {
 		File imageStorageDir = new File(context.getExternalFilesDir(
 				Environment.DIRECTORY_PICTURES), "posters");
 		
+		//make a new posters folder if it doesn't exist
 		if (!imageStorageDir.exists()){
 	        if (! imageStorageDir.mkdirs()){
 	            Log.d("MyCameraApp", "failed to create directory");
 	        }
 	    }
 
+		//make file to store image from camera
 		File imageFile = new File(imageStorageDir.getPath() + File.separator +
 		        "img_001.jpg");
 				
@@ -65,6 +63,7 @@ public class MainActivity extends Activity {
 		startActivityForResult(intent,CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 	}
 	
+	//copy tess data (in Assests) to external storage
 	private void copyAssets() {
 	    AssetManager assetManager = getAssets();
 	    String[] files = null;
@@ -97,35 +96,19 @@ public class MainActivity extends Activity {
 	    while((read = in.read(buffer)) != -1){
 	      out.write(buffer, 0, read);
 	    }
-	}
-
-	//BINARIZE FOR REAL!
-	
+	}	
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		final Context context = this;
 		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
 			if (resultCode == RESULT_OK) {
-				// Image captured and saved to fileUri specified in the Intent
-				//Toast.makeText(this, "Image saved to:\n" +
-				//		data.getData(), Toast.LENGTH_LONG).show();
 
+				//get image
 				String filePath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)+ "/" + "posters" + "/" + "img_001.jpg";
 
-				String pictureText = ""; //update this to be the result of the tesseract stuff
-				//BitmapFactory.Options options = new BitmapFactory.Options();
-			//	options.inSampleSize = 4;
-
-				//Bitmap bitmap = BitmapFactory.decodeFile(filePath, options );
-				//TessBaseAPI baseApi = new TessBaseAPI();
-				//DATA_PATH = Path to the storage
-				// lang = for which the language data exists, usually "eng"	
-				
-				
+				//make folder to store tess dict. 
 				File dictDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tessdata");
-				
-				String DATA_PATH = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
 				
 				if (!dictDir.exists()){
 			        if (! dictDir.mkdirs()){
@@ -143,7 +126,10 @@ public class MainActivity extends Activity {
 
 				Bitmap bitmap2 = BitmapFactory.decodeFile(filePath, options);
 				
-       // BINARIZE HERE!!!
+				//diretctory to save binarized image
+				String DATA_PATH = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
+				
+       // BINARIZE Image
 				
 				int height = bitmap2.getHeight();
 				int width = bitmap2.getWidth();
@@ -199,9 +185,6 @@ public class MainActivity extends Activity {
 					Log.e(TAG, "Couldn't correct orientation: " + e.toString());
 				}
 
-
-				// _image.setImageBitmap( bitmap );
-
 				Log.v(TAG, "Before baseApi");
 
 				TessBaseAPI baseApi = new TessBaseAPI();
@@ -233,7 +216,7 @@ public class MainActivity extends Activity {
 
 				
 				Intent intent = new Intent(context, FormActivity.class); //create the new form activity
-				intent.putExtra("TEXT", pictureText); //store the results of the ocr to send to the form
+				intent.putExtra("TEXT", recognizedText); //store the results of the ocr to send to the form
 				//startActivity(intent); 
 			} else if (resultCode == RESULT_CANCELED) {
 				// User cancelled the image capture
@@ -242,110 +225,6 @@ public class MainActivity extends Activity {
 			}
 		}
 	}
-	
-	//binarizing stuff
-
-	    /** Desired tile X dimension; actual size may vary */
-	    public final static int OTSU_SIZE_X = 32;
-
-	    /** Desired tile Y dimension; actual size may vary */
-	    public final static int OTSU_SIZE_Y = 32;
-
-	    /** Desired X smoothing value */
-	    public final static int OTSU_SMOOTH_X = 2;
-
-	    /** Desired Y smoothing value */
-	    public final static int OTSU_SMOOTH_Y = 2;
-
-	    /** Fraction of the max Otsu score, typically 0.1 */
-	    public final static float OTSU_SCORE_FRACTION = 0.1f;
-
-	    /**
-	     * Performs locally-adaptive Otsu threshold binarization with default
-	     * parameters.
-	     *
-	     * @param pixs An 8 bpp PIX source image.
-	     * @return A 1 bpp thresholded PIX image.
-	     */
-	    public static Pix otsuAdaptiveThreshold(Pix pixs) {
-	        return otsuAdaptiveThreshold(
-	                pixs, OTSU_SIZE_X, OTSU_SIZE_Y, OTSU_SMOOTH_X, OTSU_SMOOTH_Y, OTSU_SCORE_FRACTION);
-	    }
-
-	    /**
-	     * Performs locally-adaptive Otsu threshold binarization.
-	     * <p>
-	     * Notes:
-	     * <ol>
-	     * <li>The Otsu method finds a single global threshold for an image. This
-	     * function allows a locally adapted threshold to be found for each tile
-	     * into which the image is broken up.
-	     * <li>The array of threshold values, one for each tile, constitutes a
-	     * highly downscaled image. This array is optionally smoothed using a
-	     * convolution. The full width and height of the convolution kernel are (2 *
-	     * smoothX + 1) and (2 * smoothY + 1).
-	     * <li>The minimum tile dimension allowed is 16. If such small tiles are
-	     * used, it is recommended to use smoothing, because without smoothing, each
-	     * small tile determines the splitting threshold independently. A tile that
-	     * is entirely in the image bg will then hallucinate fg, resulting in a very
-	     * noisy binarization. The smoothing should be large enough that no tile is
-	     * only influenced by one type (fg or bg) of pixels, because it will force a
-	     * split of its pixels.
-	     * <li>To get a single global threshold for the entire image, use input
-	     * values of sizeX and sizeY that are larger than the image. For this
-	     * situation, the smoothing parameters are ignored.
-	     * <li>The threshold values partition the image pixels into two classes: one
-	     * whose values are less than the threshold and another whose values are
-	     * greater than or equal to the threshold. This is the same use of
-	     * 'threshold' as in pixThresholdToBinary().
-	     * <li>The scorefract is the fraction of the maximum Otsu score, which is
-	     * used to determine the range over which the histogram minimum is searched.
-	     * See numaSplitDistribution() for details on the underlying method of
-	     * choosing a threshold.
-	     * <li>This uses enables a modified version of the Otsu criterion for
-	     * splitting the distribution of pixels in each tile into a fg and bg part.
-	     * The modification consists of searching for a minimum in the histogram
-	     * over a range of pixel values where the Otsu score is within a defined
-	     * fraction, scoreFraction, of the max score. To get the original Otsu
-	     * algorithm, set scoreFraction == 0.
-	     * </ol>
-	     *
-	     * @param pixs An 8 bpp PIX source image.
-	     * @param sizeX Desired tile X dimension; actual size may vary.
-	     * @param sizeY Desired tile Y dimension; actual size may vary.
-	     * @param smoothX Half-width of convolution kernel applied to threshold
-	     *            array: use 0 for no smoothing.
-	     * @param smoothY Half-height of convolution kernel applied to threshold
-	     *            array: use 0 for no smoothing.
-	     * @param scoreFraction Fraction of the max Otsu score; typ. 0.1 (use 0.0
-	     *            for standard Otsu).
-	     * @return A 1 bpp thresholded PIX image.
-	     */
-	    public static Pix otsuAdaptiveThreshold(
-	            Pix pixs, int sizeX, int sizeY, int smoothX, int smoothY, float scoreFraction) {
-	        if (pixs == null)
-	            throw new IllegalArgumentException("Source pix must be non-null");
-	        if (pixs.getDepth() != 8)
-	            throw new IllegalArgumentException("Source pix depth must be 8bpp");
-
-	        int nativePix = nativeOtsuAdaptiveThreshold(
-	                pixs.getNativePix(), sizeX, sizeY, smoothX, smoothY, scoreFraction);
-
-	        if (nativePix == 0)
-	            throw new RuntimeException("Failed to perform Otsu adaptive threshold on image");
-
-	        return new Pix(nativePix);
-	    }
-
-	    // ***************
-	    // * NATIVE CODE *
-	    // ***************
-
-	    private static native int nativeOtsuAdaptiveThreshold(
-	            int nativePix, int sizeX, int sizeY, int smoothX, int smoothY, float scoreFract);
-	    
-	    
-	//end binarizing stuff
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
