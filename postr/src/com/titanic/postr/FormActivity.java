@@ -17,11 +17,17 @@ public class FormActivity extends Activity {
 		String picText = intent.getStringExtra("TEXT"); //gets the text string that was sent to this activity (contents of image)
 	}
 	
+	public String getEndDate(String picText){
+		EditText endDateText = (EditText)findViewById(R.id.ShowEndDate);
+		endDateText.setText("endDate");
+		return "endDate";
+	}
+	
 	public String getDate(String picText){
-		EditText dateText = (EditText)findViewById(R.id.ShowStartDate);
+		EditText startDateText = (EditText)findViewById(R.id.ShowStartDate);
 		//WHAT ABOUT END DATE?????
-		dateText.setText("date");
-		return "date";
+		startDateText.setText("startDate");
+		return "startDate";
 	}
 	
 	public String getWhere(String picText){
@@ -85,7 +91,7 @@ public class FormActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
  
-			    Intent intent = new Intent(context, Cancel.class);
+			    Intent intent = new Intent(context, MainActivity.class);
                             startActivity(intent);   
  
 			}
