@@ -8,7 +8,13 @@
     <string name="editeventname"></string>
     <string name="where">Location: </string>
     <string name="show_where"></string>
-    <string name="date">Date: </string>
+    <string name="show_start_date"></string>
+    <string name="show_end_date"></string>
+    <string name="start_date">Start Date: </string>
+    <string name="end_date">End Date:</string>
     <string name="show_date"></string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="backpic">Go Back to Picture</string>
 
 </resources>

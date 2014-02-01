@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Postr</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="eventname">Event Name:</string>
+    <string name="editeventname"></string>
+    <string name="where">Location: </string>
+    <string name="show_where"></string>
+    <string name="date">Date: </string>
+    <string name="show_date"></string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="backpic">Go Back to Picture</string>
+
+</resources>

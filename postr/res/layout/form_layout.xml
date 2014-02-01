@@ -5,10 +5,11 @@
     android:layout_width="wrap_content"  
     android:layout_height="wrap_content"  
     android:scrollbars="vertical">  
-    <LinearLayout  
-        android:layout_width="fill_parent"  
-        android:orientation="vertical"  
-        android:layout_height="wrap_content">  
+
+    <LinearLayout
+        android:layout_width="316dp"
+        android:layout_height="455dp"
+        android:orientation="vertical" >
 	
     <TextView  
 	    android:id="@+id/EventName"  
@@ -19,7 +20,7 @@
 	</TextView>  
 	
     <EditText  
-	    android:id="@+id/EditTextName"  
+	    android:id="@+id/EditEventName"  
 	    android:layout_height="wrap_content"  
 	    android:hint="@string/editeventname"  
 	    android:inputType="textPersonName"  
@@ -43,20 +44,57 @@
 	</EditText> 
 	
     <TextView  
-	    android:id="@+id/Date"  
+	    android:id="@+id/StartDate"  
 	    android:layout_width="wrap_content"  
 	    android:layout_height="wrap_content"  
-	    android:text="@string/date"  
+	    android:text="@string/start_date"  
 	    android:textSize="10pt">  
 	</TextView>
 	
     <EditText  
-	    android:id="@+id/ShowDate"  
+	    android:id="@+id/ShowStartDate"  
 	    android:layout_height="wrap_content"  
-	    android:hint="@string/show_date"  
+	    android:hint="@string/show_start_date"  
 	    android:inputType="date"  
 	    android:layout_width="fill_parent">  
-	</EditText>
+	</EditText> 
+    
+    <TextView  
+	    android:id="@+id/EndDate"  
+	    android:layout_width="wrap_content"  
+	    android:layout_height="wrap_content"  
+	    android:text="@string/end_date"  
+	    android:textSize="10pt">  
+	</TextView>
+	
+    <EditText  
+	    android:id="@+id/ShowEndDate"  
+	    android:layout_height="wrap_content"  
+	    android:hint="@string/show_start_date"  
+	    android:inputType="date"  
+	    android:layout_width="fill_parent">  
+	</EditText> 
+	
+    <Button  
+	    android:id="@+id/Cancel"  
+	    android:layout_height="wrap_content"  
+	    android:text="@string/cancel"   
+	    android:layout_width="fill_parent">  
+	</Button> 
+	
+    <Button  
+	    android:id="@+id/BackPic"  
+	    android:layout_height="wrap_content"  
+	    android:text="@string/backpic"  
+	    android:layout_width="fill_parent">  
+	</Button> 
+	
+    <Button  
+	    android:id="@+id/Submit"  
+	    android:layout_height="wrap_content"  
+	    android:text="@string/submit"  
+	    android:layout_width="fill_parent">  
+	</Button>
         
     </LinearLayout>  
     
