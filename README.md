@@ -1,11 +1,11 @@
-#  Tartan Hacks 2014
+#  Carson
 
 ## PROJECT GOAL:
-Android app that takes picture of poster and adds event to calendar. 
+Android app that that allows user to take a picture of an event poster to convert it into a calendar event.  Made at TartanHacks 2014. 
 
 
-## TEAM MEMBERS: 
-- Ashna Ashok (design, dropbox integration, application logic)
-- Emma Binns (image ocr, dropbox integration)
-- Mopewa Ogundipe (image ocr, image processing)
-- Naomi Rubin (image processing, text extraction, calendar integration)
+## Contributors: 
+- Ashna Ashok 
+- Emma Binns 
+- Mopewa Ogundipe 
+- Naomi Rubin 
